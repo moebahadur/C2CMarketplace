@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Using Google Font */
+    background: linear-gradient(135deg, #71b7e6, #9b59b6); /* Soft gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    -webkit-font-smoothing: antialiased; /* Better font rendering */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: #9b59b6; /* A purple tone for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #8e44ad; /* Darker purple on hover */
+    text-decoration: underline;
+}
+
+/* Container for the entire login/register module */
+.container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px; /* Max width for the container */
+    text-align: center;
+    position: relative; /* Needed for absolute positioning of messages/toggle */
+    overflow: hidden; /* Ensures forms don't overflow during transitions */
+}
+
+/* Welcome Title */
+.marketplace-title {
+    font-size: 2.2em; /* Larger, more impactful font */
+    margin-bottom: 25px;
+    color: #34495e; /* Darker, more professional color */
+    font-weight: 700; /* Bolder */
+    letter-spacing: 0.5px;
+}
+
+/* Messages (Success/Error) */
+.success-message,
+.error-message {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid transparent; /* Default transparent border */
+    animation: fadeIn 0.5s ease-out; /* Fade in animation */
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+/* Form Toggle Buttons */
+.form-toggle {
+    display: flex;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    background-color: #f0f0f0;
+    color: #555;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.toggle-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.toggle-btn.active {
+    background-color: #9b59b6; /* Active button color */
+    color: #fff;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Inner shadow for active */
+}
+
+/* Form Box Styles */
+.form-box {
+    position: absolute; /* Position forms absolutely within container */
+    top: 190px; /* Adjust based on title and toggle height */
+    left: 0;
+    width: 100%;
+    padding: 0 40px; /* Match container padding */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transform: translateX(100%); /* Start off-screen to the right */
+}
+
+.form-box.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); /* Slide into view */
+    position: static; /* Take up space when active */
+    animation: fadeInSlideIn 0.5s ease-out; /* Combined animation */
+}
+
+/* Ensure only one form is static at a time for proper layout flow */
+.form-box:not(.active) {
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+
+.form-box h2 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    color: #34495e;
+    font-weight: 600;
+}
+
+.form-box form input[type="text"],
+.form-box form input[type="email"],
+.form-box form input[type="password"],
+.form-box form select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.form-box form input:focus,
+.form-box form select:focus {
+    border-color: #71b7e6; /* Focus color matching gradient */
+    box-shadow: 0 0 8px rgba(113, 183, 230, 0.3);
+}
+
+.form-box form select {
+    appearance: none; /* Remove default arrow */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%204.4%201.8%208.7%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.9%205.4s9.3-1.8%2012.9-5.4l128-127.9c3.6-4.2%205.4-8.5%205.4-12.9%200-4.4-1.8-8.7-5.4-12.9z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+    background-size: 12px auto;
+}
+
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #34495e;
+}
+
+.btn-primary {
+    background-color: #9b59b6; /* Primary button color */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #8e44ad;
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Link in paragraphs */
+.form-box p {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInSlideIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    .container {
+        margin: 20px;
+        padding: 25px;
+    }
+
+    .marketplace-title {
+        font-size: 1.8em;
+    }
+
+    .form-box {
+        top: 150px; /* Adjust for smaller title/toggle */
+        padding: 0 25px;
+    }
+
+    .form-box h2 {
+        font-size: 1.5em;
+    }
+
+    .toggle-btn {
+        font-size: 1em;
+        padding: 10px 10px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 1em;
+        color: #34495e;
+    }
+}
+
+@media (max-height: 700px) {
+    body {
+        align-items: flex-start; /* Prevent shrinking on very short screens */
+        padding: 20px;
+    }
+    .container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .form-box {
+        top: auto; /* Let it flow naturally */
+        position: static;
+    }
+}

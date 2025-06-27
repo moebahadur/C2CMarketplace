@@ -1,0 +1,425 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.header {
+    background-color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex; /* THIS IS ESSENTIAL: Makes its direct children flex items */
+    justify-content: space-between; /* THIS IS ESSENTIAL: Pushes children to edges and spaces them */
+    align-items: center; /* Vertically aligns items in the middle */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Targeting the ul specifically within the nav to avoid applying to other elements */
+nav .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Makes li elements flex items */
+    align-items: center;
+    gap: 20px; /* Adds space between the direct children (list items like Home, My Cart, etc.) */
+}
+
+nav .nav-links a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+nav .nav-links a:hover {
+    color: #007bff;
+}
+
+/* Styles for the user actions container on the right */
+.user-actions {
+    position: relative; /* Needed for the dropdown to position correctly */
+    display: flex; /* Makes its children (greeting, dropdown/buttons) flex items */
+    align-items: center;
+    gap: 15px; /* Adds space between 'Hello, name!' and the dropdown/buttons */
+}
+
+.user-greeting {
+    font-weight: bold;
+    color: #555;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.welcome-section {
+    background-color: #e9ecef;
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.welcome-section h1.welcome-title {
+    font-size: 36px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.welcome-section p.welcome-subtitle {
+    font-size: 18px;
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.search-section .search-container {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-container .search-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-container .search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.search-container .search-button:hover {
+    background-color: #0056b3;
+}
+
+.featured-section {
+    padding: 30px 0;
+}
+
+.featured-section h2.featured-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image-link {
+    display: block;
+    text-decoration: none;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+    text-decoration: none;
+}
+
+.product-description {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 8px;
+}
+.product-category, .product-stock {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.product-seller {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-size: 16px;
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.add-to-cart-form {
+    text-align: center;
+}
+
+.add-to-cart-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-form button:hover {
+    background-color: #0056b3;
+}
+
+.view-more {
+    text-align: center;
+}
+
+.view-more a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.view-more a:hover {
+    color: #0056b3;
+}
+
+.no-products {
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+    font-size: 1.2em;
+    border: 1px dashed #ced4da;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.out-of-stock {
+    color: #dc3545;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.seller-overview {
+    background-color: #f0f8ff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    margin-top: 40px;
+}
+
+.seller-overview p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.seller-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 25px;
+}
+
+.seller-stats p {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.seller-stats strong {
+    color: #28a745;
+}
+
+.seller-overview a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.seller-overview a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.sell-button {
+    background-color: #ffc107;
+    color: #333;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.sell-button:hover {
+    background-color: #e0a800;
+}
+
+.error-message, .success-message {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Dropdown specific styles */
+.user-actions .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 101;
+    right: 0; /* Align to the right of its parent (.user-actions) */
+    top: 100%; /* Position below the parent */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.user-actions .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    /* Reset any margin that might have been applied by .nav-links a in error */
+    margin-left: 0;
+}
+
+.user-actions .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.user-actions:hover .dropdown-content {
+    display: block;
+}
+
+.login-button, .register-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover, .register-button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+footer nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+footer nav ul li a:hover {
+    color: #f8f9fa;
+}
