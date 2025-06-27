@@ -3,14 +3,17 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Database configuration
-$host = "localhost";
-$users = "root"; // Renamed from $users to $username for consistency
-$password = "";
-$database = "c2c_marketplace";
+// Railway Database configuration
+$host = $_ENV['MYSQLHOST'] ?? 'localhost';
+$username = $_ENV['MYSQLUSER'] ?? 'root'; // Fixed variable name from $users to $username
+$password = $_ENV['MYSQLPASSWORD'] ?? '';
+$database = $_ENV['MYSQLDATABASE'] ?? 'c2c_marketplace'; // Keep your original database name as fallback
 
-// MySQLi Connection
-$conn = new mysqli($host, $users, $password, $database);
+// Get port separately for Railway
+$port = $_ENV['MYSQLPORT'] ?? '3306';
+
+// MySQLi Connection with port specification for Railway
+$conn = new mysqli($host, $username, $password, $database, $port);
 
 // Check connection
 if ($conn->connect_error) {
@@ -118,6 +121,5 @@ function require_admin() {
         exit();
     }
 }
-
 
 ?>
